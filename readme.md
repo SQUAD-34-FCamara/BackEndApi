@@ -6,8 +6,7 @@
     <li> xxxxxxx</li>
 </ul></p>
 
-
-   <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
+  
    <a href="https://github.com/tgmarinho/README-ecoleta/stargazers"> </a>
    <br>
    <a href="https://squad-api-spring.herokuapp.com/swagger-ui/index.html">Documentação</a>
