@@ -8,9 +8,9 @@
 
 
    <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
-   <a href="https://github.com/tgmarinho/README-ecoleta/stargazers">
-
-  </a>
+   <a href="https://github.com/tgmarinho/README-ecoleta/stargazers"> </a>
+   <br>
+   <a href="https://squad-api-spring.herokuapp.com/swagger-ui/index.html">Documentação</a>
 </p>
 
 <h4 align="center"> 
@@ -36,7 +36,6 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [Spring Boot](https://spring.io/projects/spring-boot)
 - [PostgresSQL](https://www.postgresql.org/)
 - [OpenApi](https://swagger.io/specification/)
-
 
 
 
