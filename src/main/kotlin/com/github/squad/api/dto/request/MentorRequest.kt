@@ -6,7 +6,7 @@ data class MentorRequest (
     var nome: String,
     var email: String,
     var senha: String,
-    var especialidade: List<ESPECIALIDADES>,
+    var especialidade: ESPECIALIDADES,
     var linkLinkendin: String,
     var LinkMeet: String
 )

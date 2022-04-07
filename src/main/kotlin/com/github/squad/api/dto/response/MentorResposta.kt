@@ -6,6 +6,6 @@ data class MentorResposta (
     val id: Long,
     val nome: String,
     val email: String,
-    val especialidades: List<ESPECIALIDADES>,
+    val especialidades: ESPECIALIDADES,
     val linkLinkedin: String,
         )
