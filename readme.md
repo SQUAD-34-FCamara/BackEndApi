@@ -1,6 +1,6 @@
 ## SQUAD 34 - Backend API
-<p id="sobre" align="center">funcionalidades: <ul>
-    <li>Cadastro </li>
+<p id="sobre" align="center">Funcionalidades: <ul>
+    <li>Cadastro de Mentor </li>
     <li>xxxxxx</li>
     <li>xxxxxx</li>
     <li> xxxxxxx</li>
