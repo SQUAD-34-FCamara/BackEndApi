@@ -1,11 +1,12 @@
 package com.github.squad.api.dto.response
 
-import com.github.squad.api.model.EspecialidadeModel
+import com.github.squad.api.enums.Especialidade
+
 
 data class MentorResposta (
     val id: Long,
     val nome: String,
     val email: String,
-    val especialidades: MutableList<EspecialidadeModel>,
+    val especialidades: Set<Especialidade>,
     val linkLinkedin: String,
         )
