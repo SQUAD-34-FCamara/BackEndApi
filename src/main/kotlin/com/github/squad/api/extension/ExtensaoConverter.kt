@@ -19,6 +19,7 @@ fun MentorModel.toResponse(): MentorResposta{
 
 fun MentorRequest.toModel(): MentorModel {
     return MentorModel(
+        nomeCompleto = this.nomeCompleto,
         nome = this.nome,
         email = this.email,
         senha = this.senha,

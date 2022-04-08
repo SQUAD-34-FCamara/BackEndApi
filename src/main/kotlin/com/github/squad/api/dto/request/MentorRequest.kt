@@ -3,6 +3,7 @@ package com.github.squad.api.dto.request
 
 data class MentorRequest (
 
+    var nomeCompleto: String,
     var nome: String,
     var email: String,
     var senha: String,
