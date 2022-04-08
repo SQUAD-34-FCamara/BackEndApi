@@ -1,7 +1,7 @@
 package com.github.squad.api.service
 
+
 import com.github.squad.api.dto.request.MentorRequest
-import com.github.squad.api.dto.response.MentorResposta
 import com.github.squad.api.extension.toModel
 import com.github.squad.api.model.MentorModel
 import com.github.squad.api.repository.MentorRepository
@@ -19,5 +19,7 @@ class MentorService(private val mentorRepository: MentorRepository) {
         val mentor = mentorReq.toModel()
          mentorRepository.save(mentor)
     }
+
+
 
 }
