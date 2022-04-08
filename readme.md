@@ -1,6 +1,6 @@
 ## SQUAD 34 - Backend API
 <p id="sobre" align="center">Funcionalidades: <ul>
-    <li>Cadastro de Mentor </li>
+    <li>Cadastro do Mentor </li>
     <li>xxxxxx</li>
     <li>xxxxxx</li>
     <li> xxxxxxx</li>
@@ -9,7 +9,7 @@
   
    <a href="https://github.com/tgmarinho/README-ecoleta/stargazers"> </a>
    <br>
-   <a href="https://squad-api-spring.herokuapp.com/swagger-ui/index.html">Documentação</a>
+   <a href="https://teset-pg.herokuapp.com/swagger-ui/index.html">Documentação</a>
 </p>
 
 <h4 align="center"> 
@@ -20,9 +20,11 @@
 
 <p align="center" id="license">  
 
-- [ ] xxxxxxxxx
-- [ ] xxxxxxxxx
-- [ ] xxxxxxx
+- [x] Cadastro Mentor
+- [x] Listar Mentores
+- [x] Listar Mentor por ID
+- [ ] Listar Mentor por Categoria
+- [ ] Cadastro Usuário
 - [ ] xxxxxxxxx
 
 <br id="techs">
