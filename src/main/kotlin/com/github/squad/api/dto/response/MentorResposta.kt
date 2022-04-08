@@ -8,5 +8,5 @@ data class MentorResposta (
     val nome: String,
     val email: String,
     val especialidades: Set<Especialidade>,
-    val linkLinkedin: String,
+    val linkLinkedin: String
         )
