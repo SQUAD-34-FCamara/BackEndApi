@@ -8,5 +8,5 @@ data class MentorRequest (
     var senha: String,
     var especialidade: MutableList<EspecialidadeModel>,
     var linkLinkendin: String,
-    var LinkMeet: String
+    var linkMeet: String
 )

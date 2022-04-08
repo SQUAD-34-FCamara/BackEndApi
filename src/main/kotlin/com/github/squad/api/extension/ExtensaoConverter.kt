@@ -22,7 +22,7 @@ fun MentorRequest.toModel(): MentorModel {
             email = this.email,
             especialidades = this.especialidade,
             linkLinkedin = this.linkLinkendin,
-            linkMeet = this.LinkMeet,
+            linkMeet = this.linkMeet,
             senha = this.senha
     )
 }

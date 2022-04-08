@@ -6,7 +6,6 @@ import com.github.squad.api.dto.response.PageResponse
 import com.github.squad.api.extension.toPageResponse
 import com.github.squad.api.extension.toResponse
 import com.github.squad.api.service.MentorService
-import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.web.PageableDefault
 import org.springframework.http.HttpStatus
