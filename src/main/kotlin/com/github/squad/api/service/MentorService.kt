@@ -2,6 +2,9 @@ package com.github.squad.api.service
 
 
 import com.github.squad.api.dto.request.MentorRequest
+import com.github.squad.api.dto.response.MentorResposta
+import com.github.squad.api.enums.Errors
+import com.github.squad.api.exception.NotFoundException
 import com.github.squad.api.extension.toModel
 import com.github.squad.api.model.MentorModel
 import com.github.squad.api.repository.MentorRepository
@@ -20,6 +23,11 @@ class MentorService(private val mentorRepository: MentorRepository) {
          mentorRepository.save(mentor)
     }
 
+    fun getMentorById(id: Long): MentorModel {
+        return mentorRepository.findById(id).orElseThrow {
+            NotFoundException(Errors.FC001.message.format(id), Errors.FC001.code)
+        }
+    }
 
 
 }

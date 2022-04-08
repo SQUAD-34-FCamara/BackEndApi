@@ -15,6 +15,10 @@ import javax.validation.Valid
 @RestController
 @RequestMapping("/api/v1/mentores")
 class MentorController(private val mentorService: MentorService) {
+    @GetMapping("/{id}")
+    fun getMentor(@PathVariable id: Long): MentorResposta {
+        return mentorService.getMentorById(id).toResponse()
+    }
     @GetMapping()
     fun listarMentores(@PageableDefault(page = 0,size = 10) paginacao: Pageable ):
             PageResponse<MentorResposta> {
