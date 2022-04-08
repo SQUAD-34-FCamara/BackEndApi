@@ -13,6 +13,9 @@ data class MentorModel(
     var id: Long? = null,
 
     @Column
+    var nomeCompleto: String,
+
+    @Column
     var nome: String,
 
     @Column
