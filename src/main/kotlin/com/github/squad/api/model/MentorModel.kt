@@ -1,11 +1,8 @@
 package com.github.squad.api.model
 
-import com.github.squad.api.enums.ESPECIALIDADES
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+
+import org.hibernate.Hibernate
+import javax.persistence.*
 
 @Entity(name = "mentor_model")
 data class MentorModel(
@@ -23,11 +20,27 @@ data class MentorModel(
     var senha: String,
 
     @Column
-    var especialidades: ESPECIALIDADES,
+    @OneToMany
+    var especialidades: MutableList<EspecialidadeModel>,
 
     @Column
     var linkLinkedin: String,
 
     @Column
     var linkMeet: String
-)
+) {
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || Hibernate.getClass(this) != Hibernate.getClass(other)) return false
+        other as MentorModel
+
+        return id != null && id == other.id
+    }
+
+    override fun hashCode(): Int = javaClass.hashCode()
+
+    @Override
+    override fun toString(): String {
+        return this::class.simpleName + "(id = $id , nome = $nome , email = $email , senha = $senha , linkLinkedin = $linkLinkedin , linkMeet = $linkMeet )"
+    }
+}
