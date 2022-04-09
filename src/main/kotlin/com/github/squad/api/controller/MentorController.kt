@@ -1,5 +1,6 @@
 package com.github.squad.api.controller
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import com.github.squad.api.dto.request.MentorRequest
 import com.github.squad.api.dto.response.MentorResposta
 import com.github.squad.api.dto.response.PageResponse
@@ -19,6 +20,7 @@ class MentorController(private val mentorService: MentorService) {
     fun getMentor(@PathVariable id: Long): MentorResposta {
         return mentorService.getMentorById(id).toResponse()
     }
+//    @JsonIgnore
     @GetMapping()
     fun listarMentores(@PageableDefault(page = 0,size = 10) paginacao: Pageable ):
             PageResponse<MentorResposta> {
