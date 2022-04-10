@@ -1,14 +1,20 @@
 package com.github.squad.api.extension
 
 import com.github.squad.api.dto.request.AgendamentoRequest
+import com.github.squad.api.dto.request.EmailRequest
 import com.github.squad.api.dto.request.MentorRequest
 import com.github.squad.api.dto.response.MentorResposta
+import com.github.squad.api.dto.response.MentorRespostaId
 import com.github.squad.api.dto.response.PageResponse
 import com.github.squad.api.enums.Especialidade
 import com.github.squad.api.model.Agendamento
+import com.github.squad.api.model.Email
 import com.github.squad.api.model.Mentor
 import org.springframework.data.domain.Page
+import org.springframework.format.annotation.DateTimeFormat
 import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeFormatter.ofPattern
 
 fun Mentor.toResponse(): MentorResposta{
     return MentorResposta(
@@ -16,9 +22,19 @@ fun Mentor.toResponse(): MentorResposta{
             nome = this.nome,
             email = this.email,
             especialidades = this.especialidades!!,
-            agendamentos = this.agendamentos as MutableList<Agendamento>,
-            linkTeams = this.linkTeams,
             linkImage = this.linkImage
+    )
+}
+
+fun Mentor.toResponseId(): MentorRespostaId {
+    return MentorRespostaId(
+        id = this.id!!,
+        nome = this.nome,
+        email = this.email,
+        especialidades = this.especialidades!!,
+        agendamentos = this.agendamentos as MutableList<Agendamento>,
+        linkImage = this.linkImage,
+        linkTeams = this.linkTeams
     )
 }
 
@@ -38,6 +54,26 @@ fun MentorRequest.toModel(): Mentor {
         agendamentos = mutableListOf(),
         linkTeams = this.linkTeams,
         linkImage = this.linkImage
+    )
+}
+
+fun EmailRequest.toModel(agendamento: Agendamento): Email {
+    val nomeMentor = agendamento.mentor?.nome
+    val linkTeams = agendamento.mentor?.linkTeams
+    val emailMentor = agendamento.mentor?.email
+    val dataFormat: DateTimeFormatter? = DateTimeFormatter.ofPattern("dd/MM/yyyy | HH:mm")
+    val data = agendamento.data?.format(dataFormat)
+    val dataEma =  data?.split("|")?.get(0)
+    val hora = data?.split("|")?.get(1)
+    return Email(
+        toAluno = this.toAluno,
+        toMentor = emailMentor,
+        nameAluno = this.nameAluno,
+        data = dataEma,
+        hora = hora,
+        withAttachment = this.withAttachment,
+        nameMentor = nomeMentor,
+        linkTeams = linkTeams,
     )
 }
 
@@ -70,3 +106,4 @@ fun changeStringToLocalDateTime(data : String) : LocalDateTime {
     val novaData = LocalDateTime.parse(data)
     return novaData
 }
+
