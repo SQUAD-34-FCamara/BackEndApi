@@ -5,8 +5,8 @@ import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
 
-@Entity(name = "usuario")
-data class UsuarioModel (
+@Entity(name = "aluno")
+data class Aluno (
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
     var nome: String? = null,

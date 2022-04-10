@@ -3,9 +3,11 @@ package com.github.squad.api.controller
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.github.squad.api.dto.request.MentorRequest
 import com.github.squad.api.dto.response.MentorResposta
+import com.github.squad.api.dto.response.MentorRespostaId
 import com.github.squad.api.dto.response.PageResponse
 import com.github.squad.api.extension.toPageResponse
 import com.github.squad.api.extension.toResponse
+import com.github.squad.api.extension.toResponseId
 import com.github.squad.api.service.MentorService
 import org.springframework.data.domain.Pageable
 import org.springframework.data.web.PageableDefault
@@ -17,8 +19,8 @@ import javax.validation.Valid
 @RequestMapping("/api/v1/mentores")
 class MentorController(private val mentorService: MentorService) {
     @GetMapping("/{id}")
-    fun getMentor(@PathVariable id: Long): MentorResposta {
-        return mentorService.getMentorById(id).toResponse()
+    fun getMentor(@PathVariable id: Long): MentorRespostaId {
+        return mentorService.getMentorById(id).toResponseId()
     }
 //    @JsonIgnore
     @GetMapping()
