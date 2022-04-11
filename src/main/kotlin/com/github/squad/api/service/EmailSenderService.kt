@@ -1,19 +1,21 @@
 package com.github.squad.api.service
 
-import com.github.squad.api.model.Agendamento
+import org.thymeleaf.spring5.SpringTemplateEngine
 import com.github.squad.api.model.Email
 import org.apache.commons.io.IOUtils
 import org.springframework.core.io.ByteArrayResource
 import org.springframework.mail.javamail.JavaMailSender
 import org.springframework.mail.javamail.MimeMessageHelper
 import org.springframework.stereotype.Service
+import org.thymeleaf.context.Context
 import java.net.URL
 import javax.mail.internet.InternetAddress
 import javax.mail.internet.MimeMessage
 
 @Service
 class EmailSenderService(
-    private val emailSender: JavaMailSender
+    private val emailSender: JavaMailSender,
+    private var templateEngine: SpringTemplateEngine
 ) {
 
     fun sendMail(email: Email) {
@@ -32,14 +34,28 @@ class EmailSenderService(
         return message
     }
     private fun createMessageWithAttachment(email: Email): MimeMessage {
+        val template = "emailTemplate"
         val message: MimeMessage = emailSender.createMimeMessage()
-        val helper = MimeMessageHelper(message, true)
+        val helper = MimeMessageHelper(message, true, "UTF-8")
+        val nameALuno:  String = email.nameAluno
+        val linkTeeams: String? = email.linkTeams
+        val data: String? = email.data
+        val hora: String? = email.hora
+        val nameMentor: String? = email.nameMentor
+        var context: Context = Context()
+        context.setVariable("nameAluno", nameALuno, )
+        context.setVariable("linkTeeams", linkTeeams)
+        context.setVariable("data", data)
+        context.setVariable("hora", hora)
+        context.setVariable("nameMentor", nameMentor)
+
+        val html: String = templateEngine.process(template, context)
         val kotlinIconStream = URL("https://upload.wikimedia.org/wikipedia/commons/7/74/Kotlin_Icon.png").openStream()
-        val springIconStream = URL("https://upload.wikimedia.org/wikipedia/commons/4/44/Spring_Framework_Logo_2018.svg").openStream()
 
         setupMessage(helper, email )
+        helper.setText(html, true)
         helper.addAttachment("KotlinIcon.png", ByteArrayResource(IOUtils.toByteArray(kotlinIconStream)))
-        helper.addAttachment("SpringIcon.svg", ByteArrayResource(IOUtils.toByteArray(springIconStream)))
+
 
         return message
     }
