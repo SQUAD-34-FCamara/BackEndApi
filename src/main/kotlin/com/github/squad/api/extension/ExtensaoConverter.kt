@@ -14,10 +14,8 @@ import com.github.squad.api.model.Aluno
 import com.github.squad.api.model.Email
 import com.github.squad.api.model.Mentor
 import org.springframework.data.domain.Page
-import org.springframework.format.annotation.DateTimeFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import java.time.format.DateTimeFormatter.ofPattern
 
 fun Mentor.toResponse(): MentorResposta{
     return MentorResposta(
@@ -41,12 +39,11 @@ fun Mentor.toResponseId(): MentorRespostaId {
     )
 }
 
-fun AgendamentoRequest.toModel(mentor: Mentor, aluno: Aluno): Agendamento {
+fun AgendamentoRequest.toModel(mentor: Mentor): Agendamento {
     return Agendamento(
         data = changeStringToLocalDateTime(this.data),
         status = true,
-        mentor = mentor,
-        aluno = aluno
+        mentor = mentor
     )
 }
 
@@ -57,7 +54,7 @@ fun AlunoReq.toModel(): Aluno {
     )
 }
 
-fun Aluno.toRespones(): AlunoResponseId {
+fun Aluno.toResponses(): AlunoResponseId {
     return AlunoResponseId(
         id = this.id!!,
         nome = this.nome!!,

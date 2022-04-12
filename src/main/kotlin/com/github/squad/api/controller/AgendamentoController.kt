@@ -10,7 +10,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/agendamentos")
+@RequestMapping("/api/v1/agendamentos")
 class AgendamentoController(
     private val mentorService: MentorService,
     private val agendamentoService: AgendamentoService,
@@ -20,9 +20,9 @@ class AgendamentoController(
     @ResponseStatus(HttpStatus.CREATED)
     fun criarData(@RequestBody agendamento: AgendamentoRequest){
         val mentor = mentorService.getMentorById(agendamento.mentorId)
-        val aluno = alunoService.getAlunoById(agendamento.alunoId)
+//        val aluno = alunoService.getAlunoById(agendamento.alunoId)
 //        agendamentoService.save(agendamento.toModel(mentor))
-        mentorService.updateAgendamento(mentor, aluno, agendamento.toModel(mentor, aluno))
+        mentorService.updateAgendamento(mentor, agendamento.toModel(mentor))
     }
 
     @PostMapping("/alunos/{id}")
