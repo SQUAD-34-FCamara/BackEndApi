@@ -39,7 +39,7 @@ class MentorService(
         }
     }
 
-    fun updateAgendamento(mentor: Mentor, aluno: Aluno, novoAgendamento: Agendamento) {
+    fun updateAgendamento(mentor: Mentor, novoAgendamento: Agendamento) {
         val mentorCopy = mentor.copy(agendamentos = mentor.agendamentos.plus(novoAgendamento))
         mentorRepository.save(mentorCopy)
 
