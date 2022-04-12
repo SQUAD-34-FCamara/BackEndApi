@@ -97,6 +97,13 @@ fun EmailRequest.toModel(agendamento: Agendamento): Email {
     )
 }
 
+fun EmailRequest.toAlunoReq(): AlunoReq {
+    return AlunoReq(
+        nome = this.nameAluno,
+        email = this.toAluno
+    )
+}
+
 fun <T> Page<T>.toPageResponse(): PageResponse<T> {
     return PageResponse(
         this.content, this.number, this.totalPages, this.totalElements
