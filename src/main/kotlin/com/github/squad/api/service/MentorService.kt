@@ -4,6 +4,7 @@ package com.github.squad.api.service
 import com.github.squad.api.dto.request.MentorRequest
 import com.github.squad.api.enums.Errors
 import com.github.squad.api.exception.NotFoundException
+import com.github.squad.api.extension.findEspecialidadeByEnum
 import com.github.squad.api.extension.toModel
 import com.github.squad.api.model.Agendamento
 import com.github.squad.api.model.Mentor
@@ -14,7 +15,12 @@ import org.springframework.stereotype.Service
 
 @Service
 class MentorService(private val mentorRepository: MentorRepository) {
-    fun listarMentores(paginacao: Pageable): Page<Mentor> {
+    fun listarMentores(paginacao: Pageable, especialidade: String?): Page<Mentor> {
+        especialidade?.let {
+            val listIt: List<String> = it.split(",")
+            val skills = findEspecialidadeByEnum(listIt)
+            return mentorRepository.findAllByEspecialidadesIn(skills, paginacao)
+        }
         return mentorRepository.findAll(paginacao)
     }
 

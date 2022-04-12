@@ -24,11 +24,12 @@ class MentorController(private val mentorService: MentorService) {
     }
 //    @JsonIgnore
     @GetMapping()
-    fun listarMentores(@PageableDefault(page = 0,size = 10) paginacao: Pageable ):
-            PageResponse<MentorResposta> {
-            return mentorService.listarMentores(paginacao).map{
-                it.toResponse()
-            }.toPageResponse()
+    fun listarMentores(@RequestParam especialidade: String? ,@PageableDefault(page = 0,size = 10)
+            paginacao: Pageable ):
+                PageResponse<MentorResposta> {
+                return mentorService.listarMentores(paginacao, especialidade).map{
+                    it.toResponse()
+                }.toPageResponse()
     }
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
