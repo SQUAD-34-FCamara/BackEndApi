@@ -50,11 +50,11 @@ class EmailSenderService(
         context.setVariable("nameMentor", nameMentor)
 
         val html: String = templateEngine.process(template, context)
-        val kotlinIconStream = URL("https://upload.wikimedia.org/wikipedia/commons/7/74/Kotlin_Icon.png").openStream()
+//        val kotlinIconStream = URL("https://upload.wikimedia.org/wikipedia/commons/7/74/Kotlin_Icon.png").openStream()
 
         setupMessage(helper, email )
         helper.setText(html, true)
-        helper.addAttachment("KotlinIcon.png", ByteArrayResource(IOUtils.toByteArray(kotlinIconStream)))
+//        helper.addAttachment("KotlinIcon.png", ByteArrayResource(IOUtils.toByteArray(kotlinIconStream)))
 
 
         return message

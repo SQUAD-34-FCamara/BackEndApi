@@ -1,13 +1,16 @@
 package com.github.squad.api.extension
 
 import com.github.squad.api.dto.request.AgendamentoRequest
+import com.github.squad.api.dto.request.AlunoReq
 import com.github.squad.api.dto.request.EmailRequest
 import com.github.squad.api.dto.request.MentorRequest
+import com.github.squad.api.dto.response.AlunoResponseId
 import com.github.squad.api.dto.response.MentorResposta
 import com.github.squad.api.dto.response.MentorRespostaId
 import com.github.squad.api.dto.response.PageResponse
 import com.github.squad.api.enums.Especialidade
 import com.github.squad.api.model.Agendamento
+import com.github.squad.api.model.Aluno
 import com.github.squad.api.model.Email
 import com.github.squad.api.model.Mentor
 import org.springframework.data.domain.Page
@@ -38,11 +41,28 @@ fun Mentor.toResponseId(): MentorRespostaId {
     )
 }
 
-fun AgendamentoRequest.toModel(mentor: Mentor): Agendamento {
+fun AgendamentoRequest.toModel(mentor: Mentor, aluno: Aluno): Agendamento {
     return Agendamento(
         data = changeStringToLocalDateTime(this.data),
         status = true,
-        mentor = mentor
+        mentor = mentor,
+        aluno = aluno
+    )
+}
+
+fun AlunoReq.toModel(): Aluno {
+    return Aluno(
+        nome = this.nome,
+        email = this.email,
+    )
+}
+
+fun Aluno.toRespones(): AlunoResponseId {
+    return AlunoResponseId(
+        id = this.id!!,
+        nome = this.nome!!,
+        email = this.email!!,
+        agendamentosAluno = this.agendamentosAluno as MutableList<Agendamento>
     )
 }
 

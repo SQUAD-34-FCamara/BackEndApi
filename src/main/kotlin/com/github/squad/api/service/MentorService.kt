@@ -7,14 +7,18 @@ import com.github.squad.api.exception.NotFoundException
 import com.github.squad.api.extension.findEspecialidadeByEnum
 import com.github.squad.api.extension.toModel
 import com.github.squad.api.model.Agendamento
+import com.github.squad.api.model.Aluno
 import com.github.squad.api.model.Mentor
+import com.github.squad.api.repository.AlunoRepository
 import com.github.squad.api.repository.MentorRepository
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 
 @Service
-class MentorService(private val mentorRepository: MentorRepository) {
+class MentorService(
+    private val mentorRepository: MentorRepository,
+    ) {
     fun listarMentores(paginacao: Pageable, especialidade: String?): Page<Mentor> {
         especialidade?.let {
             val listIt: List<String> = it.split(",")
@@ -35,9 +39,10 @@ class MentorService(private val mentorRepository: MentorRepository) {
         }
     }
 
-    fun updateAgendamento(mentor: Mentor, novoAgendamento: Agendamento) {
+    fun updateAgendamento(mentor: Mentor, aluno: Aluno, novoAgendamento: Agendamento) {
         val mentorCopy = mentor.copy(agendamentos = mentor.agendamentos.plus(novoAgendamento))
         mentorRepository.save(mentorCopy)
+
     }
 
 

@@ -19,4 +19,7 @@ data class Agendamento (
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mentor_id")
     var mentor: Mentor? = null,
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "aluno_id")
+    var aluno: Aluno? = null,
 )
