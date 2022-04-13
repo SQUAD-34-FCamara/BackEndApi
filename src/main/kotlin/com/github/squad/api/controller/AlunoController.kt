@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*
 
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/v1/alunos/")
 class AlunoController(private val alunoService: AlunoService) {
     @PostMapping()
