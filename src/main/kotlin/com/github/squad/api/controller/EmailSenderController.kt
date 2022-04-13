@@ -12,14 +12,11 @@ import com.github.squad.api.service.AlunoService
 import com.github.squad.api.service.EmailSenderService
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Controller
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/v1/email")
 class EmailSenderController(private val emailSenderService: EmailSenderService,
                             private val agendamentoService: AgendamentoService,
