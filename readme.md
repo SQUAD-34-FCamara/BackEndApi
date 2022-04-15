@@ -31,13 +31,34 @@ de serviços tanto para a criação de novos dados como para a consulta de dados
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/6aeb9e678fc69deb5063?action=collection%2Fimport)
 
 ### Exemplo de uso
-<p>Exemplo de requisição </p>
-
+Exemplo de uso
 ``
 curl --request GET \
 --url https://teset-pg.herokuapp.com/api/v1/mentores/1
 ``
 
+### EndPoints
+Listar Mentor por ID
+
+```
+curl --request GET \
+  --url https://teset-pg.herokuapp.com/api/v1/mentores/1
+```
+Listar Mentor por Categoria
+```
+curl --request GET \
+  --url 'https://teset-pg.herokuapp.com/api/v1/mentores?especialidade=CLOUD'
+```
+Listar Todos os Mentores
+```
+curl --request GET \
+  --url https://teset-pg.herokuapp.com/api/v1/mentores
+```
+Listar Aluno por email
+```
+curl --request GET \
+  --url https://teset-pg.herokuapp.com/api/v1/alunos/{email}
+```
 ### 📚 Documentação
 <a href="https://teset-pg.herokuapp.com/swagger-ui/index.html">Documentação</a> 🚧🚧
 <br/>
@@ -52,7 +73,6 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [OpenApi](https://swagger.io/specification/)
 - [Kotlin](https://kotlinlang.org/)
 
-<br/>
 
 ### Teste Container
 <a href="https://github.com/SQUAD-34-FCamara/BackEndApi/tree/feature/container"> Docker Teste</a>
