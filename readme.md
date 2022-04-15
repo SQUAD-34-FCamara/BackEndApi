@@ -27,17 +27,39 @@ de serviços tanto para a criação de novos dados como para a consulta de dados
 <br id="techs">
 
 
-### Teste no Postman
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/6aeb9e678fc69deb5063?action=collection%2Fimport)
+### Getting started  
+Etapas para testar o projeto.
 
-### Exemplo de uso
-<p>Exemplo de requisição </p>
+### Email
 
-``
-curl --request GET \
---url https://teset-pg.herokuapp.com/api/v1/mentores/1
-``
+Este projeto foi configurado para smtp da Google, então é necessário que o usuário tenha um email válido para enviar as mensagens.
 
+```sh
+spring.mail.username=${email}
+spring.mail.password=${email-password}
+```
+
+
+### Docker
+
+```sh
+mvn clean package
+```
+build the image(from dockerfile):
+```sh
+docker build --tag=tag-name .
+```
+Run the container
+```sh
+docker-compose up- d 
+```
+Check if is alive:
+```sh
+docker-compose ps
+```
+check more in <a href="https://www.baeldung.com/dockerizing-spring-boot-application">
+Docker-Spring-Guide
+</a>
 
 ### 🛠 Tecnologias
 

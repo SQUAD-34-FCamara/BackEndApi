@@ -107,6 +107,7 @@
 				</dependencies>
 			</plugin>
 		</plugins>
+		<finalName>api-squad-kotlin</finalName>
 	</build>
 
 </project>
